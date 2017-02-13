@@ -1,0 +1,27 @@
+<h1>Events#new</h1>
+<p>Find me in app/views/events/new.html.erb</p>
+
+
+<%= form_for @event do |t| %>
+  <div>
+  <%= t.label :name %>
+  <%= t.text_field :name %>
+  </div>
+
+  <div>
+  <%= t.label :location %>
+  <%= t.text_field :location %>
+  </div>
+
+  <div>
+  <%= t.label :date %>
+  <%= t.date_field :date %>
+  </div>
+
+  <div>
+  <%= t.label :target %>
+  <%= t.number_field :target %>
+  </div>
+
+  <%= t.submit %>
+<% end %>
