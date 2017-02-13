@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+  root to: 'events#index'
+
+  devise_for :users
+  
   get 'events/index'
 
   get 'events/new'

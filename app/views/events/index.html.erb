@@ -11,7 +11,13 @@
 
         <p><%= event.date %></p>
         <p><%= event.target %></p>
+        <p><%= event.user.email %></p>
 
+        <p><%= link_to 'Show', post %></p>
+        <% if post.user == curent_user %>
+        <p><%= link_to 'Edit', edit_post_path(post)%></p>
+        <p><%= link_to 'Destory', post, method: :delete, data: {confrim: 'Are you sure'} %></p>
+        <% end %>
     <% end %>
   </div>
 
