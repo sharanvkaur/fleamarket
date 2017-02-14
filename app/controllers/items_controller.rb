@@ -16,13 +16,17 @@ class ItemsController < ApplicationController
       render :new
     end
 
-
-
   end
+
 
   def show
     @items = Item.all
     render :show
+  end
+
+  def destroy
+    Item.find(params[:id]).delete
+    redirect_to action:"show"
   end
 
 

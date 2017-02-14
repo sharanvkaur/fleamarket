@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   get 'items/show'
 
+  delete 'items/destroy'
+
   get 'events/index'
 
   get 'events/new'
