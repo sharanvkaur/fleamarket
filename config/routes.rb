@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
+
+  root 'items#new'
+
   get 'items/new'
+
+  post 'items/create'
+
+  get 'items/show'
 
   get 'events/index'
 

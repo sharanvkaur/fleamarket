@@ -1,24 +1,25 @@
 class ItemsController < ApplicationController
 
   def new
+    @item = Item.new
+    render :new
   end
 
   def create
-    @user = current_user
-    @item = @user.items.create(item_params)
-    redirect_to user_path
+    @item = Item.create(item_params)
+    redirect_to action: "show"
   end
 
   def show
-    @user = current_user
-    @items = @user.items
+    @items = Item.all
+    render :show
   end
 
 
   private
 
   def item_params
-    params.require(:item).permit(:name, :category, :price, :condition, :description, :stock, :photo)
+    params.require(:item).permit(:name, :category, :price, :condition, :description, :stock, :photo, :user_id)
   end
 
   end
