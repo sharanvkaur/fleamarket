@@ -1,0 +1,18 @@
+<h1>Items#new</h1>
+<p>Find me in app/views/items/new.html.erb</p>
+<% current_user = User.find_by(id: 1) %>
+
+<%= form_for @item, url: {controller: "items", action: "create"} do |t| %>
+  <%= t.label :name %>
+  <%= t.text_field :name %><br />
+  <%= t.label :category %> <%= t.text_field :category %><br />
+  <%= t.label :price %><%= t.text_field :price %><br />
+  <%= t.label :condition %><%= t.text_field :condition %><br />
+
+  <%= t.label :description %><%= t.text_field :description %><br />
+  <%= t.label :stock %><%= t.text_field :stock %><br />
+  <%= t.label :photo %><%= t.file_field :photo %><br />
+
+  <%= t.hidden_field :user_id, :value => current_user.id %>
+  <%= t.submit "Add Items" %>
+  <% end %>
