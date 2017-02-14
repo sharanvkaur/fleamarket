@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
 
+
   def new
     @item = Item.new
     render :new
@@ -22,6 +23,10 @@ class ItemsController < ApplicationController
   def show
     @items = Item.all
     render :show
+  end
+
+  def edit
+    @item = Item.find(params[:id])
   end
 
   def destroy

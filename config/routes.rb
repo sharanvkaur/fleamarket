@@ -8,10 +8,14 @@ Rails.application.routes.draw do
 
   get 'items/show'
 
+  get 'items/edit'
+
+  patch 'items/update'
+
   delete 'items/destroy'
 
   devise_for :users
-  
+
   get 'events/index'
 
   get 'events/new'

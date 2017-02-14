@@ -1,5 +1,6 @@
-<h1>Items#new</h1>
-<p>Find me in app/views/items/new.html.erb</p>
+<h1>Add New Items</h1>
+
+
 <% current_user = User.find_by(id: 1) %>
 
 <%= form_for @item, url: {controller: "items", action: "create"} do |t| %>
