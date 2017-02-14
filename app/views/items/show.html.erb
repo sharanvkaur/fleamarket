@@ -1,3 +1,14 @@
 This is show all item page
+<div>
 
-<%= @items %>
+<% @items.each do |item| %>
+<%= item.name %>
+<%= item.description %>
+<%= item.category %>
+<%= item.price %>
+<%= item.condition%>
+<%= item.stock %>
+
+<%= cl_image_tag(item.photo, :width => 200, :height => 200, :crop => :fill, :gravity => :face) %>
+</div>
+<% end %>

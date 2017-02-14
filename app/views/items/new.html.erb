@@ -3,18 +3,16 @@
 <% current_user = User.find_by(id: 1) %>
 
 <%= form_for @item, url: {controller: "items", action: "create"} do |t| %>
-  <%= t.label :name %><br />
-  <%= t.text_field :name %>
+  <%= t.label :name %>
+  <%= t.text_field :name %><br />
   <%= t.label :category %> <%= t.text_field :category %><br />
   <%= t.label :price %><%= t.text_field :price %><br />
   <%= t.label :condition %><%= t.text_field :condition %><br />
 
-  <%= t.label :description %><br />
-  <%= t.text_field :description %>
-  <%= t.label :stock %><br />
-  <%= t.text_field :stock %>
-  <%= t.label :photo %><br />
-  <%= t.file_field :photo %><br />
-  <%= t.hidden_field_tag :user_id, :value => current_user.id %>
+  <%= t.label :description %><%= t.text_field :description %><br />
+  <%= t.label :stock %><%= t.text_field :stock %><br />
+  <%= t.label :photo %><%= t.file_field :photo %><br />
+
+  <%= t.hidden_field :user_id, :value => current_user.id %>
   <%= t.submit "Add Items" %>
   <% end %>
