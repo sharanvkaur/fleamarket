@@ -12,10 +12,13 @@
  *
  *= require_tree .
  *= require_self
- */
-
-
+ *= require formtastic
+ *= require my_formtastic_changes
+*/
 
 .box {
   border: 1px dotted;
 }
+
+@import "semantic-ui";
+@import "semantic-ui/collections/menu";

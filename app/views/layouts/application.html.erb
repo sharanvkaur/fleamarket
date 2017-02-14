@@ -5,14 +5,40 @@
         <%= csrf_meta_tags %>
 
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <!--[if IE 6]><%= stylesheet_link_tag 'ie6' %><![endif]-->
+        <!--[if IE 7]><%= stylesheet_link_tag 'ie7' %><![endif]-->
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     </head>
 
     <body>
         <p class="notice"><%= notice %></p>
         <p class="alert"><%= alert %></p>
-        <%= link_to "Sign Up", new_user_registration_path %>
-        <%= link_to "Sign In", new_user_session_path %>
+        <div class="ui secondary pointing menu">
+  <a class="active item">
+    Home
+  </a>
+  <a class="item">
+    Messages
+  </a>
+  <a class="item">
+    Friends
+  </a>
+  <div class="right menu">
+    <a class="ui item">
+      <%= link_to "Sign Up", new_user_registration_path %>
+    </a>
+    <a class="ui item">
+      <%= link_to "Sign In", new_user_session_path %>
+    </a>
+    <a class="ui item">
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, data: {confrim: 'Are you sure'} %>
+    </a>
+  </div>
+  <br>
+</div>
+<div class="ui segment">
+  <p></p>
+</div>
         <%= yield %>
     </body>
 </html>
