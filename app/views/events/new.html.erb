@@ -15,13 +15,30 @@
 
   <div>
   <%= t.label :date %>
-  <%= t.date_field :date %>
+  <%= t.date_select :date %>
   </div>
 
   <div>
   <%= t.label :target %>
   <%= t.number_field :target %>
   </div>
+
+  <div>
+  <%= t.label :other_sellers %>
+  <%= t.check_box :other_sellers, {}, true, false %>
+  </div>
+
+
+  <div>
+  <%= t.label :description %>
+  <%= t.text_area :description %>
+  </div>
+
+  <div>
+  <%= t.label :one_liner %>
+  <%= t.text_field :one_liner %>
+  </div>
+
 
   <%= t.submit %>
 <% end %>
