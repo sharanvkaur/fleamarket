@@ -2,6 +2,14 @@ Rails.application.routes.draw do
 
   root to: 'events#index'
 
+  get 'items/new'
+
+  post 'items/create'
+
+  get 'items/show'
+
+  delete 'items/destroy'
+
   devise_for :users
   
   get 'events/index'

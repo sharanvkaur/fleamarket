@@ -1,6 +1,7 @@
 <h1>Events#index</h1>
 <p>Find me in app/views/events/index.html.erb</p>
 
+<%= link_to 'new event', events_new_path %>
 
 
     <% @events.each do |event| %>
@@ -12,8 +13,10 @@
         <p><%= event.date %></p>
         <p><%= event.target %></p>
         <p><%= event.user.email %></p>
+        <p><%= link_to 'Show', event %></p>
+        <% if event.user == current_user %>
+        <p><%= link_to 'Edit', edit_event_path(event)%></p>
+        <p><%= link_to 'Destroy', event, method: :delete, data: {confrim: 'Are you sure'} %></p>
+        <% end %>
     <% end %>
   </div>
-
-
-<%= link_to 'new event', events_new_path %>

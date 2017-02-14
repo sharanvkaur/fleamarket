@@ -1,0 +1,14 @@
+This is show all item page
+
+<div>
+<% @items.each do |item| %>
+  <%= item.name %>
+  <%= button_to "Delete Item", {:controller => 'items', :action => 'destroy', :id => item.id }, :method => :delete %>
+  <%= item.description %>
+  <%= item.category %>
+  <%= item.price %>
+  <%= item.condition%>
+  <%= item.stock %>
+  <%= cl_image_tag(item.photo, :width => 200, :height => 200, :crop => :fill, :gravity => :face) %>
+</div>
+<% end %>
