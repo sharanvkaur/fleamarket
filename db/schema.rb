@@ -28,6 +28,20 @@ ActiveRecord::Schema.define(version: 20170214042300) do
     t.boolean  "other_sellers"
   end
 
+  create_table "items", force: :cascade do |t|
+    t.string   "name"
+    t.string   "category"
+    t.integer  "price"
+    t.string   "condition"
+    t.string   "description"
+    t.string   "stock"
+    t.string   "photo"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_items_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -45,19 +59,4 @@ ActiveRecord::Schema.define(version: 20170214042300) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  create_table "items", force: :cascade do |t|
-    t.string   "name"
-    t.string   "category"
-    t.integer  "price"
-    t.string   "condition"
-    t.string   "description"
-    t.string   "stock"
-    t.string   "photo"
-    t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["user_id"], name: "index_items_on_user_id", using: :btree
-  end
-
-  add_foreign_key "items", "users"
 end
