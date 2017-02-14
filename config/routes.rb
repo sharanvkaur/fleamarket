@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'items#new'
+  root to: 'events#index'
 
   get 'items/new'
 
@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   delete 'items/destroy'
 
+  devise_for :users
+  
   get 'events/index'
 
   get 'events/new'
