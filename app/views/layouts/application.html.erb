@@ -11,34 +11,14 @@
     </head>
 
     <body>
+      <%= render "partials/header" %>
         <p class="notice"><%= notice %></p>
         <p class="alert"><%= alert %></p>
-        <div class="ui secondary pointing menu">
-  <a class="active item">
-    Home
-  </a>
-  <a class="item">
-    Messages
-  </a>
-  <a class="item">
-    Friends
-  </a>
-  <div class="right menu">
-    <a class="ui item">
-      <%= link_to "Sign Up", new_user_registration_path %>
-    </a>
-    <a class="ui item">
-      <%= link_to "Sign In", new_user_session_path %>
-    </a>
-    <a class="ui item">
-      <%= link_to "Logout", destroy_user_session_path, method: :delete, data: {confrim: 'Are you sure'} %>
-    </a>
-  </div>
-  <br>
-</div>
+
 <div class="ui segment">
-  <p></p>
+
+  <%= yield %>
 </div>
-        <%= yield %>
+
     </body>
 </html>
