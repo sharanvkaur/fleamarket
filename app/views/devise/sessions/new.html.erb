@@ -1,10 +1,10 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 <%= devise_error_messages! %>
+
 <div class="ui middle aligned center aligned grid">
   <div class="column">
     <h2>Login</h2>
     <div class="ui large form">
-      <div class="ui stacked segment">
         <div class="field">
           <div class="ui left icon input">
             <i class="user icon"></i>
@@ -17,7 +17,6 @@
             <%= f.password_field :password, autocomplete: "off", placeholder: "Password" %>
           </div>
         </div>
-      </div>
 
       <div class="field">
         <% if devise_mapping.rememberable? -%>
@@ -27,8 +26,7 @@
         </div>
         <% end -%>
       </div>
-
-      <button class="ui button fluid large orange" type="submit">Submit</button>
+      <button class="ui button fluid large red" type="submit">Submit</button>
     </div>
   </div>
 </div>
