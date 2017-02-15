@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
+  root to: 'events#index'
+
   devise_for :users, controllers: {
         sessions: 'users/sessions'
       }
+
   resources :events
+  resources :items
   resources :users
-  root to: 'events#index'
 
 
   # get 'items/new'
@@ -18,7 +21,6 @@ Rails.application.routes.draw do
   # patch 'items/update'
   #
   # delete 'items/destroy'
-
 
   # get 'events/index'
   #

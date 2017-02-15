@@ -1,26 +1,20 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Fleastarter</title>
-        <%= csrf_meta_tags %>
 
-        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-        <!--[if IE 6]><%= stylesheet_link_tag 'ie6' %><![endif]-->
-        <!--[if IE 7]><%= stylesheet_link_tag 'ie7' %><![endif]-->
-        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    </head>
+  <head>
+    <title>Fleastarter</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
 
-    <body>
+  <body>
+    <%= render "partials/header" %>
+    <%= render "partials/test" %>
 
-      <%= render "partials/header" %>
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
 
-
-<div class="ui segment">
-
-  <%= yield %>
-</div>
-
-    </body>
+      <%= yield %>
+  </body>
 </html>

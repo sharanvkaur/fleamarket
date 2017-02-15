@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  *= require semantic-ui
+ *= semantic-ui/collections/menu
 */
 
 .box {
@@ -22,5 +23,3 @@
 .featureimage {
   width:100%;  height:30%;  position:absolute;    background:transparent url("/background.jpg") repeat scroll 0% 0%;
 }
-
-// @import "semantic-ui/collections/menu";
