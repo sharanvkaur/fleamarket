@@ -1,48 +1,21 @@
+
 <div class="ui two column centered grid">
-
-
-
     <div class="ui equal width form">
-      <% current_user = User.find_by(id: 1) %>
       <h1>Add New Item</h1>
       <%= form_for @item, url: {controller: "items", action: "create"} do |t| %>
-      <div class="fields">
-        <div class="field">
-          <%= t.label :name %>
-          <%= t.text_field :name %>
-        </div>
-        <div class="field">
-          <%= t.label :category %>
-          <%= t.text_field :category %>
-        </div>
-      </div>
-    <div class="fields">
-      <div class="field">
-        <%= t.label :price %><%= t.text_field :price %>
-        <%= t.label :condition %><%= t.text_field :condition %>
-      </div>
-    </div>
-  <div class="ui form">
-      <div class="field">
-        <%= t.label :description %>
-        <%= t.text_field :description %>
-      </div>
-  </div>
-      <div class="field">
-      <%= t.label :stock %><%= t.text_field :stock %><br />
-    </div>
+  <%= t.label :name %>
+  <%= t.text_field :name %><br />
+  <%= t.label :category %> <%= t.text_field :category %><br />
+  <%= t.label :price %>$<%= t.text_field :price %><br />
+  <%= t.label :condition %><%= t.text_field :condition %><br />
 
-      <div class="field">
-          <div class="ui action input">
-            <%= t.label :photo %>
-            <%= t.file_field :photo  %>
-          </div>
-      </div>
+  <%= t.label :description %><%= t.text_field :description %><br />
+  <%= t.label :stock %><%= t.text_field :stock %><br />
+  <%= t.label :photo %><%= t.file_field :photo %><br />
 
-
-      <%= t.hidden_field :user_id, :value => current_user.id %>
-      <%= t.submit "Add Items" %>
-    <% end %>
+  <%= t.hidden_field :user_id, :value => current_user.id %>
+  <%= t.submit "Add Items" %>
+  <% end %>
 </div>
 </div>
 </div>

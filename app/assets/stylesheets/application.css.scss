@@ -12,13 +12,13 @@
  *
  *= require_tree .
  *= require_self
- *= require formtastic
- *= require my_formtastic_changes
+ *= require semantic-ui
 */
 
 .box {
   border: 1px dotted;
 }
 
-@import "semantic-ui";
-@import "semantic-ui/collections/menu";
+.featureimage {
+  width:100%;  height:30%;  position:absolute;    background:transparent url("/background.jpg") repeat scroll 0% 0%;
+}

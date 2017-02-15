@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-
+before_action :authenticate_user!, except: [:index, :show]
 
   def new
     @item = Item.new
@@ -12,17 +12,29 @@ class ItemsController < ApplicationController
     upload_file
     if @item.save
       delete_old_file
-      redirect_to action: "show"
+      redirect_to items_path
     else
       render :new
     end
 
   end
 
+  def index
+    @items = Item.all
+    render :index
+  end
+
 
   def show
-    @items = Item.all
+    @item = Item.find_by_id(params[:id])
     render :show
+  end
+
+  def show_by_user
+    current_user = User.find_by_id(params[:id])
+    # @items = Item.find_by(user_id: current_user.id)
+    @items = Item.where("user_id = ?", current_user.id)
+    render :show_by_user
   end
 
   def edit
@@ -30,20 +42,24 @@ class ItemsController < ApplicationController
     render :edit
   end
 
+
   def update
+    @item = Item.find_by_id(params[:id])
+
     upload_file
     if @item.update(item_params)
       delete_old_file
-      redirect_to action:"show", notice: 'Item was successfully updated.'
+      redirect_to items_path, notice: 'Item was successfully updated.'
     else
       render :edit
     end
   end
 
   def destroy
+    @item = Item.find_by_id(params[:id])
     delete_old_file @item.photo
-    Item.find(params[:id]).delete
-    redirect_to action:"show"
+    @item.delete
+    redirect_to items_path
   end
 
 
@@ -54,16 +70,12 @@ class ItemsController < ApplicationController
   end
 
   def upload_file
-    @item = Item.find_by_id(params[:id])
       if params[:item][:photo].present?
         if @item.valid?
           uploaded_file = params[:item][:photo].path
           cloudinary_file = Cloudinary::Uploader.upload(uploaded_file)
-          p cloudinary_file
-          p @old_file
           @old_file = @item.photo
           @item.photo = cloudinary_file['public_id']
-          p @item.photo
         end
         params[:item].delete :photo
       end

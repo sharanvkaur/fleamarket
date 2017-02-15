@@ -1,8 +1,5 @@
-<h1>Events#new</h1>
-<p>Find me in app/views/events/new.html.erb</p>
-
-
-<%= form_for @event do |t| %>
+<div class="ui grid container">
+  <%= form_for @event do |t| %>
   <div>
   <%= t.label :name %>
   <%= t.text_field :name %>
@@ -39,6 +36,6 @@
   <%= t.text_field :one_liner %>
   </div>
 
-
   <%= t.submit %>
 <% end %>
+</div>
