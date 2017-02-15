@@ -32,18 +32,16 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-gem 'devise'
 
 
-#sematic UI
+#semantic UI
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 gem 'sass', '~> 3.4', '>= 3.4.23'
 gem 'autoprefixer-rails', '~> 6.7', '>= 6.7.2'
 gem 'formtastic', '~> 3.1', '>= 3.1.4'
 
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+gem 'devise', '~> 4.2'
 gem 'cloudinary'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 
