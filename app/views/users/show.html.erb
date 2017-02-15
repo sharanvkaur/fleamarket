@@ -1,0 +1,16 @@
+<div>
+  <div class="featureimage"></div>
+</div>
+
+<img class="ui medium circular image" src=" /background.jpg">
+
+
+<a class="ui centered row header"><%= @user.email %></a>
+<a class="ui centered row header"><%= @user.full_name %></a>
+
+
+<% @user_items.each do |item| %>
+  <%= link_to item.title, item_path(item) %>
+  <% end%>
+
+</div>
