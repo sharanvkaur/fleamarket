@@ -1,14 +1,27 @@
-This is show all item page
 
-<div>
-<% @items.each do |item| %>
-  <%= item.name %>
-  <%= button_to "Delete Item", {:controller => 'items', :action => 'destroy', :id => item.id }, :method => :delete %>
-  <%= item.description %>
-  <%= item.category %>
-  <%= item.price %>
-  <%= item.condition%>
-  <%= item.stock %>
-  <%= cl_image_tag(item.photo, :width => 200, :height => 200, :crop => :fill, :gravity => :face) %>
+<div class="ui grid container">
+    <div class="ui card">
+      <div class="image">
+      <%= cl_image_tag(@item.photo, :width => 200, :height => 200, :crop => :fill, :gravity => :face) %>
+      </div>
+
+      <div class="content">
+      <div class="header"><%= @item.name %></div>
+    <div class="meta">
+      <span class="date">$<%= @item.price %></span>
+      <span class="date"><%= @item.condition%></span>
+      <span class="date"><%= @item.stock %></span>
+      <span class="date"><%= @item.category %></span>
+    </div>
+
+    <div class="description"><%= @item.description %></div>
+  </div>
+  <div class="extra content">
+    <% if @item.user_id == current_user.id %>
+    <%= link_to "Discard", {:controller => 'items', :action => 'destroy', :id => @item.id}, class: "ui button", :method => :delete %>
+    <%= link_to "Edit", {:controller => 'items', :action => 'edit', :id => @item.id }, class: "ui button" %>
+    <% end %>
+  </div>
+
 </div>
-<% end %>
+</div>
