@@ -2,17 +2,19 @@ Rails.application.routes.draw do
 
   root to: 'events#index'
 
-  get 'items/new'
 
-  post 'items/create'
-
-  get 'items/show'
-
-  get 'items/edit'
-
-  patch 'items/update'
-
-  delete 'items/destroy'
+  resources :items
+  # get 'items/new'
+  #
+  # post 'items/create'
+  #
+  # get 'items/show'
+  #
+  # get 'items/:id/edit'
+  #
+  # patch 'items/update'
+  #
+  # delete 'items/destroy'
 
   devise_for :users
 

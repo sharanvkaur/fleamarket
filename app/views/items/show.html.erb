@@ -19,7 +19,8 @@
     <div class="description"><%= item.description %></div>
   </div>
   <div class="extra content">
-    <%= button_to "Discard", {:controller => 'items', :action => 'destroy', :id => item.id }, :method => :delete %>
+    <%= button_to "Discard", {:controller => 'items', :action => 'destroy', :id => item.id, class: "ui button" }, :method => :delete %>
+    <%= link_to "Edit", {:controller => 'items', :action => 'edit', :id => item.id, class: "ui button" } %>
   </div>
 
 </div>
