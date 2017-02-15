@@ -6,11 +6,9 @@
 
 
 <a class="ui centered row header"><%= @user.email %></a>
-<a class="ui centered row header"><%= @user.full_name %></a>
+<a class="ui centered row header"><%= @user.name %></a> -->
 
 
-<% @user_items.each do |item| %>
-  <%= link_to item.title, item_path(item) %>
-  <% end%>
+
 
 </div>

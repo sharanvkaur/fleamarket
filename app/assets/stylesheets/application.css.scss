@@ -12,8 +12,7 @@
  *
  *= require_tree .
  *= require_self
- *= require formtastic
- *= require my_formtastic_changes
+ *= require semantic-ui
 */
 
 .box {
@@ -24,5 +23,7 @@
   width:100%;  height:30%;  position:absolute;    background:transparent url("/background.jpg") repeat scroll 0% 0%;
 }
 
-@import "semantic-ui";
-@import "semantic-ui/collections/menu";
+.login {
+  width: 30%;
+}
+// @import "semantic-ui/collections/menu";
