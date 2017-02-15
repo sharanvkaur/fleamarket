@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-
+before_action :authenticate_user!, except: [:index, :show]
 
   def new
     @item = Item.new
@@ -24,15 +24,24 @@ class ItemsController < ApplicationController
     render :index
   end
 
+
   def show
     @item = Item.find_by_id(params[:id])
     render :show
+  end
+
+  def show_by_user
+    current_user = User.find_by_id(params[:id])
+    # @items = Item.find_by(user_id: current_user.id)
+    @items = Item.where("user_id = ?", current_user.id)
+    render :show_by_user
   end
 
   def edit
     @item = Item.find_by_id(params[:id])
     render :edit
   end
+
 
   def update
     @item = Item.find_by_id(params[:id])
@@ -47,8 +56,9 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    # delete_old_file @item.photo
-    Item.find(params[:id]).delete
+    @item = Item.find_by_id(params[:id])
+    delete_old_file @item.photo
+    @item.delete
     redirect_to items_path
   end
 
@@ -71,8 +81,7 @@ class ItemsController < ApplicationController
       end
     end
 
-  def delete_old_file
-    old_file = nil
+  def delete_old_file old_file = nil
     file_to_del = old_file || @old_file
     Cloudinary::Uploader.destroy(file_to_del, :invalidate => true) unless file_to_del.blank?
   end

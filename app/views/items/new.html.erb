@@ -1,4 +1,5 @@
-<div class="ui grid container">
+
+<div class="ui two column centered grid">
     <div class="ui equal width form">
       <h1>Add New Item</h1>
       <%= form_for @item, url: {controller: "items", action: "create"} do |t| %>
@@ -15,5 +16,6 @@
   <%= t.hidden_field :user_id, :value => current_user.id %>
   <%= t.submit "Add Items" %>
   <% end %>
+</div>
 </div>
 </div>

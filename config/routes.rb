@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :events
   resources :items
   resources :users
-
+  get 'items/show_by_user/:id' => 'items#show_by_user'
 
   # get 'items/new'
   #

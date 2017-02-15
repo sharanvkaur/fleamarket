@@ -18,8 +18,8 @@
   </div>
   <div class="extra content">
     <% if @item.user_id == current_user.id %>
-    <%= link_to "Discard", {:controller => 'items', :action => 'destroy', :id => @item.id}, class: "ui button", :method => :delete %>
-    <%= link_to "Edit", {:controller => 'items', :action => 'edit', :id => @item.id }, class: "ui button" %>
+    <%= link_to "Discard", {:controller => 'items', :action => 'destroy', :id => @item.id}, class: "mini ui button", :method => :delete %>
+    <%= link_to "Edit", {:controller => 'items', :action => 'edit', :id => @item.id }, class: "mini ui button" %>
     <% end %>
   </div>
 
