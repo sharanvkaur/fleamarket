@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   root to: 'events#index'
 
 
-  resources :items
   # get 'items/new'
   #
   # post 'items/create'
@@ -18,13 +17,13 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  get 'events/index'
-
-  get 'events/new'
-
-  get 'events/edit'
-
-  get 'events/show'
+  # get 'events/index'
+  #
+  # get 'events/new'
+  #
+  # get 'events/edit'
+  #
+  # get 'events/show'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :events

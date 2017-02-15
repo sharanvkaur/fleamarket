@@ -1,5 +1,4 @@
 <div class="ui grid container">
-  <% current_user = User.find_by(id: 1) %>
   <h1>Update Item</h1>
     <div class="ui equal width form">
       <%= form_for @item, url: {controller: "items", action: "update"} do |t| %>
