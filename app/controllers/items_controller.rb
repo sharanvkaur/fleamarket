@@ -19,7 +19,6 @@ class ItemsController < ApplicationController
 
   end
 
-
   def index
     @items = Item.all
     render :index

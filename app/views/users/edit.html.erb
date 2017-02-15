@@ -1,0 +1,28 @@
+<div>
+  <div class="featureimage"></div>
+</div>
+
+<img class="ui medium circular image" src=" /background.jpg">
+
+<div class="ui large form">
+
+  <div class="field">
+    <label>Name</label>
+    <% if @minimum_password_length %>
+    <input type="text" name="name" placeholder="#{@minimum_password_length} ">
+    <% end %>
+  </div>
+  <div class="field">
+    <label>Profession</label>
+    <input type="text" name="profession" placeholder="Profession">
+  </div>
+  <div class="field">
+    <label>About Me</label>
+    <textarea></textarea>
+  </div>
+  <br>
+</div>
+  <button class="ui button fluid large orange" type="submit">Submit</button>
+</div>
+
+</div>
