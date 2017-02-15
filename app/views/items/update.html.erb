@@ -1,5 +1,9 @@
-<div class="ui grid container">
-  <h1>Update Item</h1>
+<div class="ui grid">
+  <div class="eight wide column">
+    <h1>Update Item</h1>
+    <%= cl_image_tag(@item.photo, :width => 200, :height => 200, :crop => :fill) %>
+  </div>
+  <div class="eight wide column">
     <div class="ui equal width form">
       <%= form_for @item, url: {controller: "items", action: "update"} do |t| %>
       <div class="fields">
@@ -39,5 +43,6 @@
       <%= t.hidden_field :user_id, :value => current_user.id %>
       <%= t.submit "Update" %>
     <% end %>
-</div>
+  </div>
+  </div>
 </div>
