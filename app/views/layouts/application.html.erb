@@ -11,9 +11,9 @@
     </head>
 
     <body>
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
-        <div class="ui secondary pointing menu">
+      <div class="ui error message">        <p class="notice"><%= notice %></p>
+              <p class="alert"><%= alert %></p></div>
+        <div class="ui orange secondary pointing menu orange">
   <a class="active item">
     Home
   </a>
@@ -36,9 +36,6 @@
   </div>
   <br>
 </div>
-<div class="ui segment">
-  <p></p>
-</div>
-        <%= yield %>
+      <%= yield %>
     </body>
 </html>

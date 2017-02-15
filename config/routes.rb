@@ -10,8 +10,16 @@ Rails.application.routes.draw do
 
   delete 'items/destroy'
 
-  devise_for :users
-  
+  # devise_for :users
+
+  devise_for :users, controllers: {
+        sessions: 'users/sessions'
+      }
+
+  get 'users/profile'
+
+  post 'users/porfile/upate'
+
   get 'events/index'
 
   get 'events/new'

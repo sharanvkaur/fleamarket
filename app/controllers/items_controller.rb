@@ -18,7 +18,6 @@ class ItemsController < ApplicationController
 
   end
 
-
   def show
     @items = Item.all
     render :show
