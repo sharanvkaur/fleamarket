@@ -11317,7 +11317,7 @@ img.ui.bordered.image {
 .ui.circular.image,
 .ui.circular.images .image > *,
 .ui.circular.image > * {
-  border-radius: 500rem;
+  border-radius: 800rem;
 }
 
 /*--------------
