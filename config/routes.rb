@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'attendances/new'
+
   root to: 'events#index'
 
   devise_for :users
@@ -14,6 +16,8 @@ Rails.application.routes.draw do
   get 'items/show_by_user/:id' => 'items#show_by_user'
   get 'users/:id' => 'users#index'
   get 'users/:id/edit' => "users#edit"
+
+  post '/attendances/create' => 'attendances#create'
 
   resources :sellers
 
