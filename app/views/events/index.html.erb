@@ -3,25 +3,38 @@
     <div class="four wide column">
       <div class="ui card">
 
-          <strong><%= event.name %></strong><br>
+        <img src="http://placehold.it/200x150">
 
-          <div class="ui indicating progress" data-value="<%= event.target %>" data-total="<%= event.target %>">
-            <div class="bar"></div>
-            <div class="label">
-              <%= event.target %> people going out of a target <%= event.target %> people.
+        <div class="center aligned content">
+          <strong><%= event.name %></strong>
+
+            <div class="ui indicating progress" data-value="<%= event.target %>" data-total="<%= event.target %>">
+              <div class="bar"></div>
+              <div class="label">
+                <%= event.target %> / <%= event.target %> people.
+              </div>
             </div>
+
+            Countdown: <strong><%= (event.date - Date.today).to_i %></strong> days<br>
+
+
+            <%= event.date.to_formatted_s(:rfc822) %><br>
+
+            Organized by: <%= event.user.name %>
           </div>
 
-          <p><%= event.location %></p>
-          <p><%= event.date %></p>
-          <p><%= event.target %></p>
-          <p><%= event.user %></p>
-          <p><%= link_to 'Show', event %></p>
-
-          <% if event.user == current_user %>
-            <p><%= link_to 'Edit', edit_event_path(event)%></p>
-            <p><%= link_to 'Destroy', event, method: :delete %></p>
-          <% end %>
+          <div class="extra content">
+            <div class="ui two buttons">
+            <%= link_to "View", event, class: "ui basic orange button" %>
+            <%= link_to "!Organizer", root_path, class: "ui basic teal button" %>
+            </div>
+            <% if current_user and event.user_id == current_user.id %>
+            <div class="ui two buttons">
+              <%= link_to "Edit", {:controller => 'events', :action => 'edit', :id => event.id }, class: "ui basic green button" %>
+              <%= link_to "Discard", {:controller => 'events', :action => 'destroy', :id => event.id}, class: "ui basic red button", :method => :delete %>
+            </div>
+            <% end %>
+          </div>
       </div>
     </div>
   <% end %>

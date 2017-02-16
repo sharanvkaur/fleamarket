@@ -5,7 +5,7 @@
     <div class="header item"><%= link_to "FLEASTARTER", root_path %></div>
 
     <%= link_to "Events", root_path, class: "item" %>
-    <%= link_to "Items", {:controller => 'items', :action => 'index'}, class: "item" %>
+    <%= link_to "Items", items_path, class: "item" %>
 
 
         <%= link_to "!find an event", root_path, class: "item" %>
@@ -17,8 +17,8 @@
 
     <div class="right menu">
 
-      <%= link_to "profile", {:controller => 'users', :action => 'show', :id => current_user.id}, class: "item" %>
-      <%= link_to "!manage account", root_path, class: "item" %>
+      <%= link_to "dashboard", {:controller => 'users', :action => 'show', :id => current_user.id}, class: "item" %>
+      <%= link_to "account info", {:controller => 'users', :action => 'edit', :id => current_user.id}, class: "item" %>
       <%= link_to "!favorites", root_path, class: "item" %>
       <%= link_to "!my events", root_path, class: "item" %>
 

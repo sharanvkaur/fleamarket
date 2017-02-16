@@ -1,0 +1,53 @@
+<div class="ui grid container">
+  <%= form_for @event do |t| %>
+
+  <div class="ui center aligned segment">
+    <div class="field">
+      <%= image_tag("header.png", :class => "ui centered medium image") %>
+    </div>
+    <div class="field">
+      <div class="ui icon input">
+        <%= t.file_field :photo %>
+      </div>
+    </div>
+  </div>
+
+  <div>
+  <%= t.label :name %>
+  <%= t.text_field :name %>
+  </div>
+
+  <div>
+  <%= t.label :location %>
+  <%= t.text_field :location %>
+  </div>
+
+  <div>
+  <%= t.label :date %>
+  <%= t.date_select :date %>
+  </div>
+
+  <div>
+  <%= t.label :target %>
+  <%= t.number_field :target %>
+  </div>
+
+  <div>
+  <%= t.label :other_sellers %>
+  <%= t.check_box :other_sellers, {}, true, false %>
+  </div>
+
+
+  <div>
+  <%= t.label :description %>
+  <%= t.text_area :description %>
+  </div>
+
+  <div>
+  <%= t.label :one_liner %>
+  <%= t.text_field :one_liner %>
+  </div>
+
+  <%= t.submit %>
+<% end %>
+</div>
