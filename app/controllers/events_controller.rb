@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
+
   def index
    @events = Event.all
  end
@@ -20,6 +21,8 @@ class EventsController < ApplicationController
 
  def show
    @event = Event.find(params[:id])
+   @attendances = Attendance.where("event_id = ?", params[:id]).count
+   @whoisgoing = Event.find(params[:id]).attendances
    # render json: params
  end
 
@@ -33,6 +36,7 @@ class EventsController < ApplicationController
    Event.find(params[:id]).delete
    redirect_to events_path
  end
+
 
  private
 

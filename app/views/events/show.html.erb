@@ -40,12 +40,12 @@
 
         <div class="six wide right floated column">
 
-          <div class="ui indicating progress" data-value="10" data-total="<%= @event.target %>" id="eventstage">
+          <div class="ui indicating progress" data-value="<%= @attendances %>" data-total="<%= @event.target %>" id="eventstage">
             <div class="bar">
 
             </div>
             <div class="label">
-              10 people going out of a target <%= @event.target %> people.
+              <%= @attendances %> people going out of a target <%= @event.target %> people.
             </div>
           </div>
 
@@ -55,6 +55,9 @@
         <li>remind me button</li>
         <li>share button</li>
         <li>who's going </li>
+        <% @whoisgoing.each do |x| %>
+        <li><%= User.find(x.user_id).name%></li>
+        <%end%>
       </div>
 
 
@@ -82,7 +85,6 @@
           <a class="ui huge button">Save and Publish</a>
         </div>
       </div>
-
 
 
     </div>
