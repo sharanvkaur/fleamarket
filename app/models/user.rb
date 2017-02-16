@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :items, dependent: :destroy
 
   has_many :attendances
+  has_many :sellers
   has_many :events, through: :attendances
+  has_many :events, through: :sellers
 
 end

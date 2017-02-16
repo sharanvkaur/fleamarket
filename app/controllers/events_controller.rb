@@ -23,10 +23,13 @@ class EventsController < ApplicationController
    @event = Event.find(params[:id])
    @attendances = Attendance.where("event_id = ?", params[:id]).count
    @whoisgoing = Event.find(params[:id]).attendances
+   @whoisselling = Seller.where("event_id = ?", params[:id])
    # render json: params
  end
 
+
  def update
+   puts "update method triggered"
    t = Event.find(params[:id])
    t.update(event_params)
    redirect_to events_path
@@ -43,5 +46,9 @@ class EventsController < ApplicationController
 
  def event_params
    params.require(:event).permit(:name, :location, :date, :target, :description, :other_sellers, :one_liner)
+ end
+
+ def status_params
+   params.require(:seller).permit(:status, :id)
  end
 end

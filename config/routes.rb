@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   resources :users
   get 'items/show_by_user/:id' => 'items#show_by_user'
 
+  resources :sellers
+
+
   # get 'items/new'
   #
   # post 'items/create'

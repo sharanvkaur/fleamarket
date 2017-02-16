@@ -1,12 +1,8 @@
-
-
-
 <!-- Page Contents -->
 
 <div class="cover"></div>
 
 <div class="pusher">
-
 
   <div class="ui vertical stripe segment">
     <div class="ui middle aligned stackable grid container">
@@ -22,59 +18,40 @@
             <h4><%= @event.location %></h4>
             <p><%= @event.description %></p>
 
+            <h1>others</h1>
 
-
-          <h1>others</h1>
-
-              <p>Target Attendance: <%= @event.target %></p>
-              <p>Created By: <%= @event.user.email %></p>
-              <p>Other Sellers allowed?: <%= @event.other_sellers %></p>
+            <p>Target Attendance:
+              <%= @event.target %></p>
+            <p>Created By:
+              <%= @event.user.email %></p>
+            <p>Other Sellers allowed?:
+              <%= @event.other_sellers %></p>
 
           </div>
         </div>
 
-
-
-
-
-
         <div class="six wide right floated column">
+          <h1>Show Potential Sellers</h1>
+          <% @whoisselling.each do |x| %>
+          <%= image_tag User.find(x.user_id).profile_image, :class => 'sellerimage'%>
+          <h2><%= User.find(x.user_id).name%></h2>
+          <%= form_for sellers_path, :method => :put do |f| %>
+          <%= f.hidden_field :id, :value => x.id %>
+          <%= f.label :status %><br>
+          <%= f.select :status, ['Pending', 'Approved', 'Rejected'], :selected => x.status, :class => 'ui dropdown' %>
+          <%= f.submit "Update", :class => 'ui button grey' %>
+          <% end %>
+          <% end %>
+        </div>
 
-          <div class="ui indicating progress" data-value="<%= @attendances %>" data-total="<%= @event.target %>" id="eventstage">
-            <div class="bar">
-
-            </div>
-            <div class="label">
-              <%= @attendances %> people going out of a target <%= @event.target %> people.
-            </div>
-          </div>
-
-
-        <li>Days to event: <%= (@event.date - Date.today).to_i %></li>
-        <li>rsvp button</li>
-        <li>remind me button</li>
-        <li>share button</li>
-        <li>who's going </li>
-        <% @whoisgoing.each do |x| %>
-        <li><%= User.find(x.user_id).name%></li>
-        <%end%>
-      </div>
-
-
-
-<div>
-
-</div>
+        <div></div>
 
       </div>
-
-
-
       <div class="row">
         <div class="center aligned column">
           <% if @event.user == current_user %>
-            <%= link_to 'Edit', edit_event_path(@event), class: "ui huge button" %>
-            <%= link_to 'Destroy', @event, method: :delete, class: "ui huge button" %>
+          <%= link_to 'Edit', edit_event_path(@event), class: "ui huge button" %>
+          <%= link_to 'Destroy', @event, method: :delete, class: "ui huge button" %>
           <% end %>
         </div>
       </div>
@@ -85,8 +62,6 @@
           <a class="ui huge button">Save and Publish</a>
         </div>
       </div>
-
-
     </div>
   </div>
 
