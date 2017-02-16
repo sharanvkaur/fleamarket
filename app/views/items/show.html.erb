@@ -17,7 +17,10 @@
     <div class="description"><%= @item.description %></div>
   </div>
   <div class="extra content">
-    <% if @item.user_id == current_user.id %>
+
+    <%= link_to "!View Seller", root_path, class: "ui basic teal button" %>
+
+    <% if @item.user_id == current_user %>
     <%= link_to "Discard", {:controller => 'items', :action => 'destroy', :id => @item.id}, class: "mini ui button", :method => :delete %>
     <%= link_to "Edit", {:controller => 'items', :action => 'edit', :id => @item.id }, class: "mini ui button" %>
     <% end %>

@@ -1,89 +1,39 @@
 <div class="ui menu">
 
-  <% if current_user %>
-
     <div class="header item"><%= link_to "FLEASTARTER", root_path %></div>
-
-    <div class="ui dropdown item">
-      Explore
-      <i class="dropdown icon"></i>
-      <div class="menu">
-        <%= link_to "Events", root_path, class: "item" %>
-        <%= link_to "!Items", items_path, class: "item" %>
-      </div>
-    </div>
-
-    <div class="ui dropdown item">
-      Be a Seller
-      <i class="dropdown icon"></i>
-      <div class="menu">
-        <%= link_to "!find an event", root_path, class: "item" %>
-        <%= link_to "!add item", new_item_path, class: "item" %>
-        <%= link_to "!manage items", root_path, class: "item" %>
-      </div>
-    </div>
-
-    <div class="ui dropdown item">
-      Be an Organizer
-      <i class="dropdown icon"></i>
-      <div class="menu">
-        <%= link_to "create event", new_event_path, class: "item" %>
-        <%= link_to "!manage events", root_path, class: "item" %>
-      </div>
-    </div>
-
-    <div class="right menu">
-
-      <a class="item"><%= current_user.email %></a>
-
-      <div class="ui dropdown item">
-        <i class="bell icon"></i>
-        <div class="menu">
-          <div class="item">Action</div>
-        </div>
-      </div>
-
-      <div class="ui dropdown item">
-        <i class="inbox icon"></i>
-        <div class="menu">
-          <div class="item">Action</div>
-        </div>
-      </div>
-
-      <div class="ui dropdown item">
-        <i class="user icon"></i>
-        <div class="menu">
-          <%= link_to "!profile", root_path, class: "item" %>
-          <%= link_to "!manage account", root_path, class: "item" %>
-          <%= link_to "!favorites", root_path, class: "item" %>
-          <%= link_to "!my events", root_path, class: "item" %>
-          <div class="divider"></div>
-          <%= link_to "log out", destroy_user_session_path, method: :delete, data: {confirm: 'Are you sure?'}, class: "item" %>
-        </div>
-      </div>
-
-      <%= link_to "log out", destroy_user_session_path, method: :delete, class: "item" %>
-
-    </div>
-
-  <% else %>
-
-    <div class="header item"><%= link_to "FLEASTARTER", root_path %></div>
-
-    <div class="ui dropdown item">
-      Explore
-      <i class="dropdown icon"></i>
-      <div class="menu">
-        <%= link_to "Events", root_path, class: "item" %>
-        <%= link_to "Items", root_path, class: "item" %>
-      </div>
-    </div>
+    <%= link_to "Explore Events", root_path, class: "item" %>
+    <%= link_to "Items for Sale", items_path, class: "item" %>
 
     <div class="right menu">
       <%= link_to "Sign Up", new_user_registration_path, class: "item" %>
       <%= link_to "Log In", new_user_session_path, class: "item" %>
     </div>
 
-  <% end %>
+
 
 </div>
+
+<script>
+$(document)
+.ready(function() {
+  $('.ui.menu .ui.dropdown').dropdown({
+    on: 'hover'
+  });
+
+  $('.ui.menu a.item')
+  .on('click', function() {
+    $(this)
+    .addClass('active')
+    .siblings()
+    .removeClass('active')
+    ;
+  });
+
+  $('.indicating')
+  .progress({
+    // percent: 50
+  })
+  ;
+})
+ ;
+</script>

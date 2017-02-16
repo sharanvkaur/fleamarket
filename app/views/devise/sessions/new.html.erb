@@ -1,11 +1,11 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 <%= devise_error_messages! %>
-
 <div class="ui middle aligned center aligned container">
-  <div class="column">
-    <h2>Login</h2>
+  <div class="ui grid centered">
+  <div class="six wide column">
     <div class="ui large form">
       <div class="ui stacked segment">
+        <h2>Login</h2>
         <div class="field">
           <div class="ui left icon input">
             <i class="user icon"></i>
@@ -27,13 +27,14 @@
           </div>
           <% end -%>
         </div>
-        <button class="ui button fluid large red" type="submit">Submit</button>
+        <button class="ui button fluid large teal" type="submit">Submit</button>
       </div>
+    </div>
+    <div class="ui message container">
+      <%= render "devise/shared/links" %>
     </div>
   </div>
   <% end %>
 </div>
-  <div class="ui message container">
-    Are you already signed up?
-    <a href="#"><%= render "devise/shared/links" %></a>
-  </div>
+
+</div>

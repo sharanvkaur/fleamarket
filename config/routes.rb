@@ -1,14 +1,19 @@
 Rails.application.routes.draw do
   root to: 'events#index'
 
-  devise_for :users, controllers: {
-        sessions: 'users/sessions'
-      }
+  devise_for :users
+
+
+  # , controllers: {
+  #       sessions: 'users/sessions'
+  #     }
 
   resources :events
   resources :items
   resources :users
   get 'items/show_by_user/:id' => 'items#show_by_user'
+  get 'users/:id' => 'users#index'
+  get 'users/:id/edit' => "users#edit"
 
   # get 'items/new'
   #

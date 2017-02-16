@@ -9,11 +9,12 @@
   </head>
 
   <body>
+    <% if current_user %>
+    <%= render "partials/header_loggedin" %>
+    <% else %>
     <%= render "partials/header" %>
-    <%= render "partials/test" %>
+    <% end %>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
 
       <%= yield %>
   </body>

@@ -3,7 +3,6 @@
 
 <!-- Page Contents -->
 
-<div class="cover"></div>
 
 <div class="pusher">
 
@@ -14,56 +13,57 @@
 
         <div class="eight wide column">
           <div class="main">
-
             <h1 class="ui header"><%= @event.name %></h1>
             <h3 class="ui header"><%= @event.one_liner %></h3>
-
             <h4><%= @event.date.to_formatted_s(:rfc822) %></h4>
             <h4><%= @event.location %></h4>
             <p><%= @event.description %></p>
 
-
-
-          <h1>others</h1>
-
+            <h1>others</h1>
               <p>Target Attendance: <%= @event.target %></p>
               <p>Created By: <%= @event.user.email %></p>
               <p>Other Sellers allowed?: <%= @event.other_sellers %></p>
-
           </div>
         </div>
 
-
-
-
-
-
         <div class="six wide right floated column">
-
-          <div class="ui indicating progress" data-value="10" data-total="<%= @event.target %>" id="eventstage">
-            <div class="bar">
-
-            </div>
-            <div class="label">
-              10 people going out of a target <%= @event.target %> people.
+          <br><br>
+            <div class="ui cards">
+              <div class="card">
+                <div class="content">
+                  <div class="header"><%= (@event.date - Date.today).to_i %> days to go</div>
+                    <div class="description">
+                      <div class="ui indicating progress" data-value="10" data-total="<%= @event.target %>">
+                        <div class="bar"></div>
+                      </div>
+                      fdsjahgksjg / <%= @event.target %> people are going
+                    </div>
+                  </div>
+                  <div class="ui bottom attached massive button">
+                    <i class="add icon"></i>RSVP
+                  </div>
+                  <div class="extra content">
+                    <div class="ui two buttons">
+                      <div class="ui basic button">
+                        <i class="calendar icon"></i>Remind Me
+                      </div>
+                      <div class="ui basic button">
+                        <i class="share icon"></i>Share
+                      </div>
+                   </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="content">
+                  <div class="header">Who's Going?</div>
+                  <div class="description">
+                    Jenny is a student studying Media Management at the New School
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-
-
-        <li>Days to event: <%= (@event.date - Date.today).to_i %></li>
-        <li>rsvp button</li>
-        <li>remind me button</li>
-        <li>share button</li>
-        <li>who's going </li>
-      </div>
-
-
-
-<div>
-
-</div>
-
-      </div>
+        </div>
 
 
 

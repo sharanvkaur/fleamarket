@@ -1,11 +1,12 @@
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
-  <div class="ui middle aligned center container">
-    <div class="column">
-      <h2>Sign up</h2>
+  <div class="ui middle aligned center aligned container">
+    <div class="ui grid centered">
+    <div class="six wide column">
       <div class="ui large form">
         <div class="ui stacked segment">
+          <h2>Sign up</h2>
           <div class="field">
             <div class="ui left icon input">
               <i class="user icon"></i>
@@ -34,14 +35,15 @@
               <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Re-enter Password" %>
             </div>
           </div>
+          <button class="ui button fluid large teal" type="submit">Submit</button>
         </div>
-        <br>
-          <button class="ui button fluid large orange" type="submit">Submit</button>
+
       </div>
+      <div class="ui message container">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+    </div>
 <% end %>
   </div>
 </div>
-    <div class="ui message container aligned center">
-      Are you already signed up?
-      <a href="#"><%= render "devise/shared/links" %></a>
-    </div>
