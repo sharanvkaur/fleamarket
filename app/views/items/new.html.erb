@@ -1,21 +1,46 @@
-
-<div class="ui two column centered grid">
-    <div class="ui equal width form">
+<div class="ui grid container">
+<div class="left floated sixteen wide column">
+  <%= form_for @item, url: {controller: "items", action: "create"}, html: {class: "ui grid"} do |t| %>
+    <div class="six wide column">
       <h1>Add New Item</h1>
-      <%= form_for @item, url: {controller: "items", action: "create"} do |t| %>
-  <%= t.label :name %>
-  <%= t.text_field :name %><br />
-  <%= t.label :category %> <%= t.text_field :category %><br />
-  <%= t.label :price %>$<%= t.text_field :price %><br />
-  <%= t.label :condition %><%= t.text_field :condition %><br />
-
-  <%= t.label :description %><%= t.text_field :description %><br />
-  <%= t.label :stock %><%= t.text_field :stock %><br />
-  <%= t.label :photo %><%= t.file_field :photo %><br />
-
-  <%= t.hidden_field :user_id, :value => current_user.id %>
-  <%= t.submit "Add Items" %>
+      <div class="ui center aligned segment">
+        <div class="field">
+          <%= image_tag("square-image.png", :class => "ui centered medium image") %>
+        </div>
+        <div class="field">
+          <div class="ui icon input">
+            <%= t.file_field :photo %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ten wide column">
+      <div class="ui equal width form">
+        <div class="field"></div>
+        <div class="field">
+          <%= t.label :name %><%= t.text_field :name %>
+        </div>
+        <div class="field">
+          <%= t.label :category %><%= t.text_field :category %>
+        </div>
+        <div class="field">
+          <%= t.label :description %><%= t.text_field :description %>
+        </div>
+        <div class="fields">
+          <div class="field">
+            <%= t.label :price %><%= t.text_field :price %>
+          </div>
+          <div class="field">
+            <%= t.label :condition %><%= t.text_field :condition %>
+          </div>
+          <div class="field">
+            <%= t.label :stock %><%= t.text_field :stock %>
+          </div>
+          <%= t.hidden_field :user_id %>
+        </div>
+      </div>
+      <%= t.submit "Add Item", :class => "ui button" %>
+    </div>
   <% end %>
-</div>
 </div>
 </div>
