@@ -7,7 +7,9 @@ before_action :authenticate_user!, except: [:index, :show]
   end
 
   def create
-    @item = Item.create(item_params)
+    # @item = Item.create(item_params)
+    @item = current_user.items.create(item_params)
+
 
     upload_file
     if @item.save
@@ -45,6 +47,7 @@ before_action :authenticate_user!, except: [:index, :show]
 
   def update
     @item = Item.find_by_id(params[:id])
+    # @item = current_user.items.create(item_params)
 
     upload_file
     if @item.update(item_params)
