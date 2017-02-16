@@ -1,29 +1,91 @@
-<div class="main">
 
-    <strong>Name: <%= @event.name %></strong><br>
-    <p>Description: <%= @event.description %></p>
-    <p>One-Liner: <%= @event.one_liner %></p>
-    <p>Other Sellers allowed?: <%= @event.other_sellers %></p>
 
-    <p>Location: <%= @event.location %></p>
-    <p>Date: <%= @event.date %></p>
-    <p>Target Attendance: <%= @event.target %></p>
-    <p>Created By: <%= @event.user.email %></p>
 
-    <p><%= link_to 'Show', @event %></p>
-      <% if @event.user == current_user %>
-        <p><%= link_to 'Edit', edit_event_path(@event)%></p>
-        <p><%= link_to 'Destroy', @event, method: :delete %></p>
-      <% end %>
+<!-- Page Contents -->
+
+<div class="cover"></div>
+
+<div class="pusher">
+
+
+  <div class="ui vertical stripe segment">
+    <div class="ui middle aligned stackable grid container">
+      <div class="row">
+
+        <div class="eight wide column">
+          <div class="main">
+
+            <h1 class="ui header"><%= @event.name %></h1>
+            <h3 class="ui header"><%= @event.one_liner %></h3>
+
+            <h4><%= @event.date.to_formatted_s(:rfc822) %></h4>
+            <h4><%= @event.location %></h4>
+            <p><%= @event.description %></p>
+
+
+
+          <h1>others</h1>
+
+              <p>Target Attendance: <%= @event.target %></p>
+              <p>Created By: <%= @event.user.email %></p>
+              <p>Other Sellers allowed?: <%= @event.other_sellers %></p>
+
+          </div>
+        </div>
+
+
+
+
+
+
+        <div class="six wide right floated column">
+
+          <div class="ui indicating progress" data-value="10" data-total="<%= @event.target %>" id="eventstage">
+            <div class="bar">
+
+            </div>
+            <div class="label">
+              10 people going out of a target <%= @event.target %> people.
+            </div>
+          </div>
+
+
+        <li>Days to event: <%= (@event.date - Date.today).to_i %></li>
+        <li>rsvp button</li>
+        <li>remind me button</li>
+        <li>share button</li>
+        <li>who's going </li>
+      </div>
+
+
+
+<div>
+
 </div>
 
-<div class="sidebar">
-  <ul>
-  <li>countdown to event</li>
-  <li>number of attendees bar</li>
-  <li>rsvp button</li>
-  <li>remind me button</li>
-  <li>share button</li>
-  <li>who's going </li>
-</ul>
+      </div>
+
+
+
+      <div class="row">
+        <div class="center aligned column">
+          <% if @event.user == current_user %>
+            <%= link_to 'Edit', edit_event_path(@event), class: "ui huge button" %>
+            <%= link_to 'Destroy', @event, method: :delete, class: "ui huge button" %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="center aligned column">
+          <a class="ui huge button">Save</a>
+          <a class="ui huge button">Save and Publish</a>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+
 </div>

@@ -1,0 +1,29 @@
+<div class="main">
+
+    <strong>Name: <%= @event.name %></strong><br>
+    <p>Description: <%= @event.description %></p>
+    <p>One-Liner: <%= @event.one_liner %></p>
+    <p>Other Sellers allowed?: <%= @event.other_sellers %></p>
+
+    <p>Location: <%= @event.location %></p>
+    <p>Date: <%= @event.date %></p>
+    <p>Target Attendance: <%= @event.target %></p>
+    <p>Created By: <%= @event.user.email %></p>
+
+    <p><%= link_to 'Show', @event %></p>
+      <% if @event.user == current_user %>
+        <p><%= link_to 'Edit', edit_event_path(@event)%></p>
+        <p><%= link_to 'Destroy', @event, method: :delete %></p>
+      <% end %>
+</div>
+
+<div class="sidebar">
+  <ul>
+  <li>countdown to event</li>
+  <li>number of attendees bar</li>
+  <li>rsvp button</li>
+  <li>remind me button</li>
+  <li>share button</li>
+  <li>who's going </li>
+</ul>
+</div>

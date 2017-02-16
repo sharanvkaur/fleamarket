@@ -4,6 +4,14 @@
       <div class="ui card">
 
           <strong><%= event.name %></strong><br>
+
+          <div class="ui indicating progress" data-value="<%= event.target %>" data-total="<%= event.target %>">
+            <div class="bar"></div>
+            <div class="label">
+              <%= event.target %> people going out of a target <%= event.target %> people.
+            </div>
+          </div>
+
           <p><%= event.location %></p>
           <p><%= event.date %></p>
           <p><%= event.target %></p>

@@ -35,7 +35,12 @@ $(document)
            .siblings()
            .removeClass('active')
          ;
-       })
-     ;
+       });
+
+       $('.indicating')
+        .progress({
+          // percent: 50
+        })
+       ;
    })
  ;
