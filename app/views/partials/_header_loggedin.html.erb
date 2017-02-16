@@ -17,7 +17,7 @@
       <div class="menu">
         <%= link_to "find an event", root_path, class: "item" %>
         <%= link_to "add item", new_item_path, class: "item" %>
-          <a class="item" href="/items/show_by_user/<%= current_user.id %>">manage my items</a>
+          <a class="item" href="/items/show">manage my items</a>
       </div>
     </div>
 
@@ -27,7 +27,7 @@
       <div class="menu">
         <%= link_to "create event", new_event_path, class: "item" %>
 
-        <%= link_to "!manage events", root_path, class: "item" %>
+        <a class="item" href="/users/<%= current_user.id %>">manage my events</a>
       </div>
     </div>
 

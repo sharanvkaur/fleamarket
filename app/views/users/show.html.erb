@@ -1,5 +1,47 @@
-show.html.erb
+
 
 <h1 class="ui centered row header container"><%= @user.name %></h1>
 <h2 class="ui centered row header container"><%= @user.profession %></h2>
-<a class="ui centered row header container"><%= @user.about %></a>
+<a class="ui centered row header container"><%= @user.email %></a>
+
+
+
+<div class="ui grid container">
+  <% @events.each do |event| %>
+    <div class="four wide column">
+      <div class="ui card">
+
+        <img src="http://placehold.it/200x150">
+
+        <div class="center aligned content">
+          <strong><%= event.name %></strong>
+
+            <div class="ui indicating progress" data-value="<%= Event.find(event.id).attendances.count %>" data-total="<%= event.target %>">
+              <div class="bar"></div>
+              <div class="label">
+                <%= Event.find(event.id).attendances.count %> / <%= event.target %> people.
+              </div>
+            </div>
+
+            Event in <strong><%= (event.date - Date.today).to_i %></strong> days<br><br>
+
+            Organized by: <%= event.user.name %>
+
+          </div>
+
+          <div class="extra content">
+            <div class="ui two buttons">
+            <%= link_to "View", event, class: "ui basic black button" %>
+            <a href="/users/<%= event.user.id %>" class="ui basic black button">Organizer</a>
+            </div>
+            <% if current_user and event.user_id == current_user.id %>
+            <div class="ui two buttons">
+              <%= link_to "Edit", {:controller => 'events', :action => 'edit', :id => event.id }, class: "ui basic green button" %>
+              <%= link_to "Discard", {:controller => 'events', :action => 'destroy', :id => event.id}, class: "ui basic red button", :method => :delete %>
+            </div>
+            <% end %>
+          </div>
+      </div>
+    </div>
+  <% end %>
+</div>
