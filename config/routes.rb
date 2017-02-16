@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   get 'users/:id' => 'users#index'
   get 'users/:id/edit' => "users#edit"
 
+  resources :sellers
+
+
   # get 'items/new'
   #
   # post 'items/create'

@@ -1,11 +1,7 @@
-
-
-
 <!-- Page Contents -->
 
 
 <div class="pusher">
-
 
   <div class="ui vertical stripe segment">
     <div class="ui middle aligned stackable grid container">
@@ -20,13 +16,25 @@
             <p><%= @event.description %></p>
 
             <h1>others</h1>
+
+
+            <p>Target Attendance:
+              <%= @event.target %></p>
+            <p>Created By:
+              <%= @event.user.email %></p>
+            <p>Other Sellers allowed?:
+              <%= @event.other_sellers %></p>
+
+
               <p>Target Attendance: <%= @event.target %></p>
               <p>Created By: <%= @event.user.email %></p>
               <p>Other Sellers allowed?: <%= @event.other_sellers %></p>
+
           </div>
         </div>
 
         <div class="six wide right floated column">
+
           <br><br>
             <div class="ui cards">
               <div class="card">
@@ -65,13 +73,26 @@
           </div>
         </div>
 
+<div>
+  <h1>Show Potential Sellers</h1>
+          <% @whoisselling.each do |x| %>
+          <%= image_tag User.find(x.user_id).profile_image, :class => 'sellerimage'%>
+          <h2><%= User.find(x.user_id).name%></h2>
+          <%= form_for sellers_path, :method => :put do |f| %>
+          <%= f.hidden_field :id, :value => x.id %>
+          <%= f.label :status %><br>
+          <%= f.select :status, ['Pending', 'Approved', 'Rejected'], :selected => x.status, :class => 'ui dropdown' %>
+          <%= f.submit "Update", :class => 'ui button grey' %>
+          <% end %>
+          <% end %>
+        </div>
 
 
-      <div class="row">
+<div class="row">
         <div class="center aligned column">
           <% if @event.user == current_user %>
-            <%= link_to 'Edit', edit_event_path(@event), class: "ui huge button" %>
-            <%= link_to 'Destroy', @event, method: :delete, class: "ui huge button" %>
+          <%= link_to 'Edit', edit_event_path(@event), class: "ui huge button" %>
+          <%= link_to 'Destroy', @event, method: :delete, class: "ui huge button" %>
           <% end %>
         </div>
       </div>
@@ -82,9 +103,6 @@
           <a class="ui huge button">Save and Publish</a>
         </div>
       </div>
-
-
-
     </div>
   </div>
 
