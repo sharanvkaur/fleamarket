@@ -8,25 +8,23 @@
         <div class="center aligned content">
           <strong><%= event.name %></strong>
 
-            <div class="ui indicating progress" data-value="<%= event.target %>" data-total="<%= event.target %>">
+            <div class="ui indicating progress" data-value="<%= Event.find(event.id).attendances.count %>" data-total="<%= event.target %>">
               <div class="bar"></div>
               <div class="label">
-                <%= event.target %> / <%= event.target %> people.
+                <%= Event.find(event.id).attendances.count %> / <%= event.target %> people.
               </div>
             </div>
 
-            Countdown: <strong><%= (event.date - Date.today).to_i %></strong> days<br>
-
-
-            <%= event.date.to_formatted_s(:rfc822) %><br>
+            Event in <strong><%= (event.date - Date.today).to_i %></strong> days<br><br>
 
             Organized by: <%= event.user.name %>
+
           </div>
 
           <div class="extra content">
             <div class="ui two buttons">
-            <%= link_to "View", event, class: "ui basic orange button" %>
-            <%= link_to "!Organizer", root_path, class: "ui basic teal button" %>
+            <%= link_to "View", event, class: "ui basic black button" %>
+            <a href="/users/<%= event.user.id %>" class="ui basic black button">Organizer</a>
             </div>
             <% if current_user and event.user_id == current_user.id %>
             <div class="ui two buttons">

@@ -1,7 +1,7 @@
 
-<div class="ui grid container">
+<div class="ui grid center aligned container">
   <% @items.each do |item| %>
-    <div class="four wide column">
+    <div class="four wide center aligned column">
       <div class="ui card">
 
         <div class="image">
@@ -14,18 +14,14 @@
           <div class="meta">
             <span class="date">Price: $<%= item.price %></span><br>
             <span class="date">Condition: <%= item.condition%></span><br>
-            <span class="date">Quantity: <%= item.stock %></span><br>
-            <span class="date">Category: <%= item.category %></span>
           </div>
-
-          <div class="description"><%= item.user_id %></div>
         </div>
 
 
     <div class="extra content">
       <div class="ui two buttons">
-      <%= link_to "Details", {:controller => 'items', :action => 'show', :id => item.id }, class: "ui basic orange button" %>
-      <%= link_to "!Seller", {:controller => 'items', :action => 'show', :id => item.id }, class: "ui basic teal button" %>
+      <%= link_to "Details", {:controller => 'items', :action => 'show', :id => item.id }, class: "ui basic black button" %>
+      <%= link_to "Seller", {:controller => 'users', :action => 'show', :id => item.user_id }, class: "ui basic black button" %>
       </div>
       <% if current_user and item.user_id == current_user.id %>
       <div class="ui two buttons">

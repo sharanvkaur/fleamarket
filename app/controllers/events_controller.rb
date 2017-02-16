@@ -4,7 +4,7 @@ class EventsController < ApplicationController
 
   def index
    @events = Event.all
- end
+   end
 
  def create
    @event = current_user.events.create(event_params)
@@ -45,7 +45,7 @@ class EventsController < ApplicationController
 
 
  def event_params
-   params.require(:event).permit(:name, :location, :date, :target, :description, :other_sellers, :one_liner)
+   params.require(:event).permit(:id, :name, :location, :date, :target, :description, :other_sellers, :one_liner)
  end
 
  def status_params

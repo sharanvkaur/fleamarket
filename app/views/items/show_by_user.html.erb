@@ -1,4 +1,4 @@
-<div class="ui grid container">
+<div class="ui grid center aligned container">
 
   <% @items.each do |item| %>
     <div class="four wide column">
@@ -19,9 +19,8 @@
     <div class="description"><%= item.description %></div>
   </div>
   <div class="extra content">
-    <%= link_to "Discard", {:controller => 'items', :action => 'destroy', :id => item.id}, class: "mini ui button", :method => :delete %>
     <%= link_to "Edit", {:controller => 'items', :action => 'edit', :id => item.id }, class: "mini ui button" %>
-    <%= link_to "Show", {:controller => 'items', :action => 'show', :id => item.id }, class: "mini ui button" %>
+    <%= link_to "Discard", {:controller => 'items', :action => 'destroy', :id => item.id}, class: "mini ui button", :method => :delete %>
   </div>
 
 </div>

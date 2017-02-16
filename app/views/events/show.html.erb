@@ -1,53 +1,59 @@
-<!-- Page Contents -->
-
-
 <div class="pusher">
-
   <div class="ui vertical stripe segment">
     <div class="ui middle aligned stackable grid container">
       <div class="row">
 
+        <div class="two wide column"></div>
+
         <div class="eight wide column">
+
           <div class="main">
             <h1 class="ui header"><%= @event.name %></h1>
             <h3 class="ui header"><%= @event.one_liner %></h3>
             <h4><%= @event.date.to_formatted_s(:rfc822) %></h4>
             <h4><%= @event.location %></h4>
             <p><%= @event.description %></p>
-
-            <h1>others</h1>
-
-
-            <p>Target Attendance:
-              <%= @event.target %></p>
-            <p>Created By:
-              <%= @event.user.email %></p>
-            <p>Other Sellers allowed?:
-              <%= @event.other_sellers %></p>
-
-
-              <p>Target Attendance: <%= @event.target %></p>
-              <p>Created By: <%= @event.user.email %></p>
-              <p>Other Sellers allowed?: <%= @event.other_sellers %></p>
-
           </div>
+
+          <br><br><br>
+
+          <div class="ui icon message">
+            <i class="spy icon"></i>
+            <div class="content">
+              <div class="header">
+                Brought to you by <a href="/users/<%= @event.user.id %>"><%= @event.user.name %></a>.
+              </div>
+              <p>Want to organize your own event? <%= link_to "Sign up now!", new_user_registration_path, class: "item" %></p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="center aligned column">
+              <% if @event.user == current_user %>
+                <%= link_to 'Edit', edit_event_path(@event), class: "ui button" %>
+                <%= link_to 'Destroy', @event, method: :delete, class: "ui button" %>
+                <a class="ui button">Save</a>
+                <a class="ui button">Save and Publish</a>
+              <% end %>
+            </div>
+          </div>
+
         </div>
 
         <div class="six wide right floated column">
-
-          <br><br>
             <div class="ui cards">
+
               <div class="card">
                 <div class="content">
                   <div class="header"><%= (@event.date - Date.today).to_i %> days to go</div>
                     <div class="description">
-                      <div class="ui indicating progress" data-value="10" data-total="<%= @event.target %>">
+                      <div class="ui indicating progress" data-value="<%= @whoisgoing.count %>" data-total="<%= @event.target %>">
                         <div class="bar"></div>
                       </div>
-                      fdsjahgksjg / <%= @event.target %> people are going
+                      <%= @whoisgoing.count %> / <%= @event.target %> people are going
                     </div>
                   </div>
-                  <div class="ui bottom attached massive button">
+                  <div class="ui bottom attached large button">
                     <i class="add icon"></i>RSVP
                   </div>
                   <div class="extra content">
@@ -61,48 +67,44 @@
                    </div>
                 </div>
               </div>
+
+              <div class="card">
+                <div class="content">
+                  <div class="header">Who's Selling?</div>
+                  <div class="description">
+                    <% @whoisselling.each do |x| %>
+                    <li><a href="/users/<%= User.find(x.user_id).id %>"><%= User.find(x.user_id).name %></a></li>
+                    <%end%>
+                  </div>
+                  <% if current_user %>
+                  <div class="ui bottom attached large button">
+                    <i class="add icon"></i>Join as Seller
+                  </div>
+                  <% end %>
+                </div>
+
+
+              </div>
+
               <div class="card">
                 <div class="content">
                   <div class="header">Who's Going?</div>
                   <div class="description">
-                    Jenny is a student studying Media Management at the New School
+                    <% @whoisgoing.each do |x| %>
+                    <li><a href="/users/<%= User.find(x.user_id).id %>"><%= User.find(x.user_id).name %></a></li>
+                    <%end%>
                   </div>
                 </div>
               </div>
+
+
             </div>
           </div>
         </div>
 
-<div>
-  <h1>Show Potential Sellers</h1>
-          <% @whoisselling.each do |x| %>
-          <%= image_tag User.find(x.user_id).profile_image, :class => 'sellerimage'%>
-          <h2><%= User.find(x.user_id).name%></h2>
-          <%= form_for sellers_path, :method => :put do |f| %>
-          <%= f.hidden_field :id, :value => x.id %>
-          <%= f.label :status %><br>
-          <%= f.select :status, ['Pending', 'Approved', 'Rejected'], :selected => x.status, :class => 'ui dropdown' %>
-          <%= f.submit "Update", :class => 'ui button grey' %>
-          <% end %>
-          <% end %>
-        </div>
 
 
-<div class="row">
-        <div class="center aligned column">
-          <% if @event.user == current_user %>
-          <%= link_to 'Edit', edit_event_path(@event), class: "ui huge button" %>
-          <%= link_to 'Destroy', @event, method: :delete, class: "ui huge button" %>
-          <% end %>
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="center aligned column">
-          <a class="ui huge button">Save</a>
-          <a class="ui huge button">Save and Publish</a>
-        </div>
-      </div>
     </div>
   </div>
 
