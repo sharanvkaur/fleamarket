@@ -33,7 +33,7 @@ before_action :authenticate_user!, except: [:index, :show]
   end
 
   def show_by_user
-    current_user = User.find_by_id(params[:id])
+    #current_user = User.find_by_id(params[:id])
     # @items = Item.find_by(user_id: current_user.id)
     @items = Item.where("user_id = ?", current_user.id)
     render :show_by_user
