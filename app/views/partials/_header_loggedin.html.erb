@@ -17,7 +17,7 @@
       <div class="menu">
         <%= link_to "find an event", root_path, class: "item" %>
         <%= link_to "add item", new_item_path, class: "item" %>
-          <a class="item" href="/items/show">manage my items</a>
+        <%= link_to "manage items", {:controller => 'items', :action => 'show_by_user', :id => current_user.id}, class: "item" %>
       </div>
     </div>
 

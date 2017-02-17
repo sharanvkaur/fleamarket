@@ -11,9 +11,10 @@ Rails.application.routes.draw do
   #     }
 
   resources :events
+  get 'items/show_by_user/:id' => 'items#show_by_user'
   resources :items
   resources :users
-  get 'items/show_by_user/:id' => 'items#show_by_user'
+
   get 'users/:id' => 'users#index'
   get 'users/:id/edit' => "users#edit"
 
