@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   resources :sellers
 
 
+
   # get 'items/new'
   #
   # post 'items/create'
