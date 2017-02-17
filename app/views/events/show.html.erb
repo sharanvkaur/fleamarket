@@ -32,6 +32,7 @@
               <% if @event.user == current_user %>
                 <%= link_to 'Edit', edit_event_path(@event), class: "ui button" %>
                 <%= link_to 'Destroy', @event, method: :delete, class: "ui button" %>
+                <a class="ui button" href="/events/<%= @event.id %>/review">Review Sellers</a>
                 <a class="ui button">Save</a>
                 <a class="ui button">Save and Publish</a>
               <% end %>

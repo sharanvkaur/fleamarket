@@ -19,7 +19,16 @@ class EventsController < ApplicationController
    @event = Event.find(params[:id])
  end
 
+
  def show
+   @event = Event.find(params[:id])
+   @attendances = Attendance.where("event_id = ?", params[:id]).count
+   @whoisgoing = Event.find(params[:id]).attendances
+   @whoisselling = Seller.where("event_id = ?", params[:id])
+   # render json: params
+ end
+
+ def review
    @event = Event.find(params[:id])
    @attendances = Attendance.where("event_id = ?", params[:id]).count
    @whoisgoing = Event.find(params[:id]).attendances

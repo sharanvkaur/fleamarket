@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   resources :events
   get 'items/show_by_user/:id' => 'items#show_by_user'
     get 'events/show_by_user/:id' => 'events#show_by_user'
+    get 'events/:id/review' => 'events#review'
+
   resources :items
   resources :users
 
