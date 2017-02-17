@@ -1,23 +1,29 @@
 <div class="ui grid container">
   <div class="left floated sixteen wide column">
-    <%= form_for :event, {controllers: 'events', action: 'create'} do |t| %>
+    <%= form_for @event do |t| %>
     <div class="six wide column">
       <h1>Create New Event</h1>
+
     </div>
+
     <div class="ten wide column">
       <br><br><br>
       <div class="ui equal width form">
+
       <div class="fields">
         <div class="field">
           <%= t.label :name %>
           <%= t.text_field :name %>
         </div>
+
       </div>
+
       <div class="fields">
         <div class="field">
           <%= t.label :date %>
           <%= t.date_field :date %>
         </div>
+
         <div class="field">
           <%= t.label :target %>
           <%= t.number_field :target %>
@@ -27,24 +33,29 @@
           <%= t.text_field :one_liner %>
         </div>
       </div>
+
 <div class="inline fields">
       <div class="twelve wide field">
         <%= t.label :location %>
         <%= t.text_field :location %>
       </div>
+
         <div class="four wide field">
         <%= t.label :other_sellers_can_join %>
         <%= t.check_box :other_sellers, {}, true, false %>
         </div>
+
 </div>
         <div class="field">
         <%= t.label :description %>
         <%= t.text_area :description %>
         </div>
+
       </div>
     </div><br>
-    <%= t.hidden_field :user_id, :value => current_user.id %>
+
     <%= t.submit "Create Event", :class => "ui button" %>
+  </div>
   <% end %>
 </div>
 </div>

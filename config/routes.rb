@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'items/show_by_user/:id' => 'items#show_by_user'
     get 'events/show_by_user/:id' => 'events#show_by_user'
     get 'events/:id/review' => 'events#review'
+    post '/events/new' => 'events#create'
 
   resources :items
   resources :users
