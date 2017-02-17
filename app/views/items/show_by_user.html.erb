@@ -16,12 +16,22 @@
       <span class="date"><%= item.category %></span>
     </div>
 
-    <div class="description"><%= item.description %></div>
   </div>
+
+
   <div class="extra content">
-    <%= link_to "Edit", {:controller => 'items', :action => 'edit', :id => item.id }, class: "mini ui button" %>
-    <%= link_to "Discard", {:controller => 'items', :action => 'destroy', :id => item.id}, class: "mini ui button", :method => :delete %>
+    <div class="ui two buttons">
+    <%= link_to "Details", {:controller => 'items', :action => 'show', :id => item.id }, class: "ui basic black button" %>
+    <%= link_to "Seller", {:controller => 'users', :action => 'show', :id => item.user_id }, class: "ui basic black button" %>
+    </div>
+    <% if current_user and item.user_id == current_user.id %>
+    <div class="ui two buttons">
+      <%= link_to "Edit", {:controller => 'items', :action => 'edit', :id => item.id }, class: "ui basic green button" %>
+      <%= link_to "Discard", {:controller => 'items', :action => 'destroy', :id => item.id}, class: "ui basic red button", :method => :delete %>
+    </div>
+    <% end %>
   </div>
+
 
 </div>
     </div>

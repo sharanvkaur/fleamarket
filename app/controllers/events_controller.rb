@@ -12,7 +12,7 @@ class EventsController < ApplicationController
  end
 
  def new
-   @event = current_user.events.new
+   @event = Event.new
  end
 
  def edit
@@ -25,6 +25,13 @@ class EventsController < ApplicationController
    @whoisgoing = Event.find(params[:id]).attendances
    @whoisselling = Seller.where("event_id = ?", params[:id])
    # render json: params
+ end
+
+ def show_by_user
+   #current_user = User.find_by_id(params[:id])
+   # @items = Item.find_by(user_id: current_user.id)
+   @events = Event.where("user_id = ?", current_user.id)
+   render :show_by_user
  end
 
 
