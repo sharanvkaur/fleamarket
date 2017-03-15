@@ -3,7 +3,9 @@
     <div class="four wide column">
       <div class="ui card">
 
-        <img src="http://placehold.it/200x150">
+        <div class="image">
+      <%= cl_image_tag(event.photo, :width => 200, :height => 150, :crop => :fill, :gravity => :face) %>
+      </div>
 
         <div class="center aligned content">
           <strong><%= event.name %></strong>

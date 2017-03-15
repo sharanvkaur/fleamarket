@@ -6,7 +6,11 @@ class AttendancesController < ApplicationController
   end
   def create
     @attendance = Attendance.create(attendance_params)
-    redirect_to events_path, alert: "You have successfully joined event."
+    if @attendance.save
+      redirect_to :back, alert: "You have successfully joined an event."
+    else
+      redirect_to :back, alert: "You have already joined the event."
+    end
   end
   private
   def attendance_params

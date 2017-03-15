@@ -8,6 +8,9 @@
         <div class="eight wide column">
 
           <div class="main">
+            <div class="image">
+          <%= cl_image_tag(@event.photo, :width => 200, :height => 200, :crop => :fill, :gravity => :face) %>
+          </div>
             <h1 class="ui header"><%= @event.name %></h1>
             <h3 class="ui header"><%= @event.one_liner %></h3>
             <h4><%= @event.date.to_formatted_s(:rfc822) %></h4>
@@ -23,18 +26,19 @@
               <div class="header">
                 Brought to you by <a href="/users/<%= @event.user.id %>"><%= @event.user.name %></a>.
               </div>
+              <% if !current_user %>
               <p>Want to organize your own event? <%= link_to "Sign up now!", new_user_registration_path, class: "item" %></p>
+              <% end %>
             </div>
           </div>
 
           <div class="row">
             <div class="center aligned column">
               <% if @event.user == current_user %>
-                <%= link_to 'Edit', edit_event_path(@event), class: "ui button" %>
-                <%= link_to 'Destroy', @event, method: :delete, class: "ui button" %>
+                <%= link_to 'Edit', edit_event_path(@event), class: "ui basic green button" %>
+                <%= link_to 'Destroy', @event, method: :delete, class: "ui basic red button" %>
                 <a class="ui button" href="/events/<%= @event.id %>/review">Review Sellers</a>
-                <a class="ui button">Save</a>
-                <a class="ui button">Save and Publish</a>
+
               <% end %>
             </div>
           </div>
@@ -79,7 +83,7 @@
                   <div class="header">Who's Selling?</div>
                   <div class="description">
                     <% @whoisselling.each do |x| %>
-                    <li><a href="/users/<%= User.find(x.user_id).id %>"><%= User.find(x.user_id).name %></a></li>
+                    <li><a href="/users/<%= User.find(x.user_id).id %>"><%= User.find(x.user_id).name %></a> (<%= x.status %>)</li>
                     <%end%>
                   </div>
                   <% if current_user %>

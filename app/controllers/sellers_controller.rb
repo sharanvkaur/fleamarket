@@ -8,9 +8,14 @@ class SellersController < ApplicationController
   end
 
   def create
-   @seller = Seller.create(seller_params)
-   redirect_to events_path, alert: "You have sent a request to join as a seller."
- end
+     @seller = Seller.create(seller_params)
+
+     if @seller.save
+       redirect_to :back, alert: "You have sent a request to join as a seller."
+     else
+       redirect_to :back, alert: "You are already a seller."
+     end
+   end
 
   private
 

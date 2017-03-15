@@ -1,36 +1,27 @@
-
 <div class="ui grid center aligned container">
-<div class="left floated sixteen wide column">
   <div class="six wide column">
-        <div class="image">
-      <%= cl_image_tag(@item.photo, :width => 200, :height => 200, :crop => :fill, :gravity => :face) %>
+    <%= cl_image_tag(@item.photo, :width => 350, :height => 350, :crop => :fill, :gravity => :face) %>
+  </div>
+  <div class="six wide column left aligned">
+    <div class="content">
+      <br>
+      <h1><%= @item.name %></h1>
+      <div class="meta">
+        <h2>$<%= @item.price %>, <small><%= @item.stock %> available</small></h2>
+        <h3>Condition: <%= @item.condition%></h3>
+        <h4>Category: <%= @item.category %></h4>
+        <h5>Description: <%= @item.description %></h5>
       </div>
     </div>
-
-      <div class="ten wide column">
-
-      <div class="content">
-      <div class="header"><%= @item.name %></div>
-    <div class="meta">
-      <span class="date">$<%= @item.price %></span><br>
-      <span class="date">Condition: <%= @item.condition%></span><br>
-      <span class="date">Quantity: <%= @item.stock %></span><br>
-      <span class="date">Category: <%= @item.category %></span><br>
-      <span class="date">Description: <%= @item.description %></span>
+  </div>
+  <div class="four wide column">
+    <br><br><br>
+    <div class="extra content">
+      <%= link_to "Seller's Profile", {:controller => 'users', :action => 'show', :id => @item.user_id }, class: "ui basic teal button" %><br><br>
+      <% if @item.user_id == current_user.id %>
+        <%= link_to "Discard", {:controller => 'items', :action => 'destroy', :id => @item.id}, class: "ui basic red button", :method => :delete %><br><br>
+        <%= link_to "Edit", {:controller => 'items', :action => 'edit', :id => @item.id }, class: "ui basic green button" %>
+      <% end %>
     </div>
-
   </div>
-
-
-  <div class="extra content">
-
-    <%= link_to "Seller's Profile", {:controller => 'users', :action => 'show', :id => @item.user_id }, class: "ui basic teal button" %>
-
-    <% if @item.user_id == current_user %>
-    <%= link_to "Discard", {:controller => 'items', :action => 'destroy', :id => @item.id}, class: "mini ui button", :method => :delete %>
-    <%= link_to "Edit", {:controller => 'items', :action => 'edit', :id => @item.id }, class: "mini ui button" %>
-    <% end %>
-  </div>
-</div>
-</div>
 </div>

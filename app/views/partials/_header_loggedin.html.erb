@@ -2,14 +2,9 @@
 
     <div class="header item"><%= link_to "FLEASTARTER", root_path %></div>
 
-    <div class="ui dropdown item">
-      Explore
-      <i class="dropdown icon"></i>
-      <div class="menu">
-        <%= link_to "Events", root_path, class: "item" %>
-        <%= link_to "Items", items_path, class: "item" %>
-      </div>
-    </div>
+    <%= link_to "Explore Events", root_path, class: "item" %>
+    <%= link_to "Explore Items", items_path, class: "item" %>
+
 
     <div class="ui dropdown item">
       Be a Seller
@@ -34,9 +29,6 @@
     <div class="right menu">
 
       <a class="item" href="/users/<%= current_user.id %>"><%= current_user.name %>'s Profile</a>
-
-      <a class="item" href="/users/<%= current_user.id %>/edit"><i class="user icon"></i></a>
-
 
       <%= link_to "log out", destroy_user_session_path, method: :delete, data: {confirm: 'Are you sure?'}, class: "item" %>
 

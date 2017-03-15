@@ -8,7 +8,14 @@ class EventsController < ApplicationController
 
  def create
    @event = current_user.events.create(event_params)
-   redirect_to events_path
+
+   upload_file
+   if @event.save
+     delete_old_file
+     redirect_to events_path
+   else
+     render :new
+   end
  end
 
  def new
@@ -33,7 +40,8 @@ class EventsController < ApplicationController
    @attendances = Attendance.where("event_id = ?", params[:id]).count
    @whoisgoing = Event.find(params[:id]).attendances
    @whoisselling = Seller.where("event_id = ?", params[:id])
-   # render json: params
+
+  #  redirect_to edit_event_path
  end
 
  def show_by_user
@@ -45,10 +53,19 @@ class EventsController < ApplicationController
 
 
  def update
-   puts "update method triggered"
-   t = Event.find(params[:id])
-   t.update(event_params)
-   redirect_to events_path
+  #  puts "update method triggered"
+  #  t = Event.find(params[:id])
+  #  t.update(event_params)
+  #  redirect_to events_path
+  @event = Event.find_by_id(params[:id])
+
+  upload_file
+  if @event.update(event_params)
+    delete_old_file
+    redirect_to events_path, notice: 'Event was successfully updated.'
+  else
+    render :edit
+  end
  end
 
  def destroy
@@ -61,7 +78,24 @@ class EventsController < ApplicationController
 
 
  def event_params
-   params.require(:event).permit(:id, :name, :location, :date, :target, :description, :other_sellers, :one_liner, :user_id)
+   params.require(:event).permit(:id, :name, :location, :date, :target, :description, :other_sellers, :one_liner, :user_id, :photo)
+ end
+
+ def upload_file
+     if params[:event][:photo].present?
+       if @event.valid?
+         uploaded_file = params[:event][:photo].path
+         cloudinary_file = Cloudinary::Uploader.upload(uploaded_file)
+         @old_file = @event.photo
+         @event.photo = cloudinary_file['public_id']
+       end
+       params[:event].delete :photo
+     end
+   end
+
+ def delete_old_file old_file = nil
+   file_to_del = old_file || @old_file
+   Cloudinary::Uploader.destroy(file_to_del, :invalidate => true) unless file_to_del.blank?
  end
 
  def status_params
